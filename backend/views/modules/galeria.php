@@ -11,57 +11,57 @@ GALERIA ADMINISTRABLE
 	<ul id="lightbox">
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo01.jpg">
-			<img src="images/galeria/photo01.jpg">
+			<a rel="grupo" href="views/images/galeria/photo01.jpg">
+			<img src="views/images/galeria/photo01.jpg">
 			</a>
 		</li>
 			
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo02.jpg">
-			<img src="images/galeria/photo02.jpg">
+			<a rel="grupo" href="views/images/galeria/photo02.jpg">
+			<img src="views/images/galeria/photo02.jpg">
 			</a>		
 		</li>
 
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo03.jpg">
-			<img src="images/galeria/photo03.jpg">
+			<a rel="grupo" href="views/images/galeria/photo03.jpg">
+			<img src="views/images/galeria/photo03.jpg">
 			</a>		
 		</li>
 
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo04.jpg">
-			<img src="images/galeria/photo04.jpg">
+			<a rel="grupo" href="views/images/galeria/photo04.jpg">
+			<img src="views/images/galeria/photo04.jpg">
 			</a>		
 		</li>
 
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo01.jpg">
-			<img src="images/galeria/photo01.jpg">
+			<a rel="grupo" href="views/images/galeria/photo01.jpg">
+			<img src="views/images/galeria/photo01.jpg">
 			</a>
 		</li>
 			
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo02.jpg">
-			<img src="images/galeria/photo02.jpg">
+			<a rel="grupo" href="views/images/galeria/photo02.jpg">
+			<img src="views/images/galeria/photo02.jpg">
 			</a>		
 		</li>
 
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo03.jpg">
-			<img src="images/galeria/photo03.jpg">
+			<a rel="grupo" href="views/images/galeria/photo03.jpg">
+			<img src="views/images/galeria/photo03.jpg">
 			</a>		
 		</li>
 
 		<li>
 			<span class="fa fa-times"></span>
-			<a rel="grupo" href="images/galeria/photo04.jpg">
-			<img src="images/galeria/photo04.jpg">
+			<a rel="grupo" href="views/images/galeria/photo04.jpg">
+			<img src="views/images/galeria/photo04.jpg">
 			</a>		
 		</li>
 	</ul>

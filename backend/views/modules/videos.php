@@ -16,28 +16,28 @@ VIDEOS ADMINISTRABLE
 	<li>
 		<span class="fa fa-times"></span>
 		<video controls>
-			<source src="videos/video01.mp4" type="video/mp4">
+			<source src="views/videos/video01.mp4" type="video/mp4">
 			</video>	
 	</li>
 
 	<li>
 		<span class="fa fa-times"></span>
 		<video controls>
-			<source src="videos/video02.mp4" type="video/mp4">
+			<source src="views/videos/video02.mp4" type="video/mp4">
 			</video>	
 	</li>
 
 	<li>
 		<span class="fa fa-times"></span>
 		<video controls>
-			<source src="videos/video03.mp4" type="video/mp4">
+			<source src="views/videos/video03.mp4" type="video/mp4">
 			</video>	
 	</li>
 
 	<li>
 		<span class="fa fa-times"></span>
 		<video controls>
-			<source src="videos/video04.mp4" type="video/mp4">
+			<source src="views/videos/video04.mp4" type="video/mp4">
 			</video>	
 	</li>
 

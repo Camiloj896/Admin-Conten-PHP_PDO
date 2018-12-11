@@ -15,3 +15,8 @@ INGRESO
 	</form>
 	
 </div>
+
+<?php
+
+	$ingreso = new Ingreso();
+	$ingreso -> IngresoController();

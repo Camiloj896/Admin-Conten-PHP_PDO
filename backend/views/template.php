@@ -36,13 +36,15 @@
 	<div class="container-fluid">
 
 		<section class="row">
-
 		
 		<!--=====================================
 		COLUMNA CONTENIDO        
 		======================================-->				
 
-			
+		<?php
+			$plantilla = new Enlaces();
+			$plantilla -> EnlacesController();		
+		?>
 
 		<!--====  Fin de COLUMNA CONTENIDO  ====-->
 

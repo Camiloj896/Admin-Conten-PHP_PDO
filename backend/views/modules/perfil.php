@@ -8,7 +8,7 @@ PERFIL
 	<span class="btn btn-info fa fa-pencil pull-left" style="font-size:10px; margin-right:10px"></span></h1>
 
 	<div style="position:relative">
-	<img src="images/photo.jpg" class="img-circle pull-right">
+	<img src="views/images/photo.jpg" class="img-circle pull-right">
 	<span class="btn btn-info fa fa-pencil" style="font-size:10px; margin-right:10px; position:absolute; right:-20px; top:-50px"></span>
 	</div>
 
