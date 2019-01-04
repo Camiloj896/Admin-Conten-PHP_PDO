@@ -8,14 +8,14 @@ CABEZOTE
 		
 		<ul>
 			<li  style="background: #333">
-				<a href="mensajes.html" style="color: #fff">
+				<a href="mensajes" style="color: #fff">
 	  			<i class="fa fa-envelope"></i> 
 	  			<span>1</span> 
 				</a>
 			</li>
 
 			<li  style="background: #333">
-				<a href="suscriptores.html" style="color: #fff">
+				<a href="suscriptores" style="color: #fff">
 	  			<i class="fa fa-bell"></i>  
 	  			<span>1</span>
 				</a>
@@ -37,12 +37,12 @@ CABEZOTE
 		
 		<img src="views/images/photo.jpg" class="img-circle">
 		
-		<p id="member">Juanu  <span class="fa fa-chevron-down"></span>
+		<p id="member"><?php echo $_SESSION["usuario"]; ?><span class="fa fa-chevron-down"></span>
 			<br>
 			<ol id="admin">
-				<li><a href="perfil.html"><span class="fa fa-user"></span>Editar Perfil</a></li>
+				<li><a href="perfil"><span class="fa fa-user"></span>Editar Perfil</a></li>
 				<li><a href=""><span class="fa fa-file-text"></span>Términos y Condiciones</a></li>
-				<li><a href=""><span class="fa fa-times"></span>Salir</a></li>
+				<li><a href="salir"><span class="fa fa-times"></span>Salir</a></li>
 			</ol>
 
 		</p>

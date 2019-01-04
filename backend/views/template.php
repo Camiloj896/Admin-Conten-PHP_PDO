@@ -53,6 +53,8 @@
 	</div>
 
 	<script src="views/js/script.js"></script>
+	<script src="views/js/ValidaUsuario.js"></script>
+	<script src="views/js/GestorSlide.js"></script>
 	
 </body>
 
