@@ -124,6 +124,12 @@ INICIO
 SLIDE            
 =============================================*/
 
+#status{
+	position: relative;	
+	margin: auto;
+	display: block;
+}
+
 #slide{
 	position: relative;	
     margin: auto;

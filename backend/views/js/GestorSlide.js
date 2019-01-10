@@ -56,30 +56,40 @@ $("#columnasSlide").on("drop", function(e){
 
 	if (Number(imagensize) < 2000000 && imagentype == "image/jpeg" || imagentype == "image/png"){
 
-		var datos = new FormData();
-
-		$("#columnasSlide").before('<img src="views/images/status.gif" id="status">')
-
+		var datos = new FormData();		
+		
 		datos.append("imagen", imagen);
 
-		// $.ajax({
-		// 	url: "views/ajax/GestorSlide.php",
-		// 	method: "POST",
-		// 	data: datos,
-		// 	cache: false,
-		// 	contentType: false,
-		// 	// processData: function(){ $("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen es inferior a 1600px * 600px</div>"')},
-		// 	success: function(res){ 
+		$.ajax({
+			url: "views/ajax/GestorSlide.php",
+			method: "POST",
+			data: datos,
+			cache: false,
+			contentType: false,
+			processData: false,
+			dataType: "json",
+			beforeSend: function(){
+				$("#columnasSlide").before('<img src="views/images/status.gif" id="status" style="height:100px;width:100px">')
+			},
+			success: function(res){
+				
+				$("#status").remove();
 
-		// 		console.log(res);
-		// 		/*if (res == 0) {
-		// 			<img src="views/images/status.gif" id="status">
-		// 			$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen es inferior a 1600px * 600px</div>"')		
-		// 		}else {*/
+				if(res == 0){				
+
+					$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen no cumple con la resolución</div>"')		
+
+				}else{
 					
-		// 	}
+					$("#columnasSlide").css({"height":"auto"});
 
-		// });
+					$("#columnasSlide").prepend('<li class="bloqueSlide" <span class="fa fa-times"></span> <img src="' + res["ruta"].slice(6) +'" class="handleImg"></li>');					
+
+					$("#ordenarTextSlide").append('<li><span class="fa fa-pencil" style="background:blue"></span> <img src="' + res["ruta"].slice(6) + '" style="float:left; margin-bottom:10px" width="80%"> <h1>' + res["titulo"] + '</h1> <p>' + res["descripcion"] + '</p> </li>');
+					
+				}		
+			}
+		});
 	}
 
 })

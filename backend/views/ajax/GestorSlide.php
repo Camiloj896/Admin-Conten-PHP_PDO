@@ -3,6 +3,7 @@
 	require_once "../../models/GestorSlide.php";
 	require_once "../../controllers/GestorSlide.php";
 
+	//CARGAR IMAGEN BD AJAX
 	
 	class Ajax{
 
