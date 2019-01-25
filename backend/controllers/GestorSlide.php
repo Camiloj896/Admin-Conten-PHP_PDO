@@ -20,13 +20,15 @@ class GestorSlideController{
 
 			$origen = imagecreatefromjpeg($datos["imagenTemporal"]);
 
-			imagejpeg($origen, $ruta);
+			$destino = imagecrop($origen, ["x" => 0, "y" => 0, "width" => 1600, "height" => 600]); #funcion usada para recortar una imagen
+
+			imagejpeg($destino, $ruta); #funcion usada para cargar la imagen al servidor
 
 			GestorSlideModels::GuardarRutaImageModel($ruta,"slide");
 
 			$res = GestorSlideModels::MostrarImageModel($ruta, "slide");
 
-			$EnviarDatos = array ("ruta" => $res["ruta"]);
+			$EnviarDatos = array ("ruta" => $res["ruta"], "titulo" => $res["titulo"], "descripcion" => $res["descripcion"]);
 			
 			echo json_encode($EnviarDatos);
 			
@@ -40,7 +42,8 @@ class GestorSlideController{
 		$res = GestorSlideModels::MostrarImagesVistaModel("slide");
 
 		foreach ($res as $row => $item){
-			echo '<li class="bloqueSlide" <span class="fa fa-times"></span> 
+
+			echo '<li id = "' . $item["id"] . '" class="bloqueSlide"><span class="fa fa-times EliminarSlide" ruta="' . $item["ruta"] . '"></span> 
 				  	<img src="' . substr($item["ruta"], 6) . '" class="handleImg">
 				  </li>';
 		}		
@@ -54,13 +57,25 @@ class GestorSlideController{
 		$res = GestorSlideModels::MostrarImagesVistaModel("slide");
 
 		foreach ($res as $row => $item){
-			echo '<li>
-					<span class="fa fa-pencil" style="background:blue"></span>
+			echo '<li id="item"'. $item["id"] .'>
+					<span class="fa fa-pencil editarSlide" style="background:blue"></span>
 					<img src="' . substr($item["ruta"], 6) . '" style="float:left; margin-bottom:10px" width="80%">
 					<h1>' . $item["titulo"] . '</h1>
 					<p> ' . $item["descripcion"] . '</p>
 				</li>';
 		}		
+
+	}
+
+	#ELIMINAR IMAGENES ALMACENADAS
+
+	public function EliminarImagesSlideController($datos){		
+
+		$res = GestorSlideModels::EliminarImagesSlideModel("slide", $datos);
+
+		unlink($datos["rutaSlide"]);
+
+		echo $res;		
 
 	}
 

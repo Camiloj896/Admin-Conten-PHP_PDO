@@ -1,8 +1,6 @@
 
 // AREA DE DESCARGA / ARRASTRE DE IMAGENES 
 
-console.log($("#columnasSlide").html());
-
 if ($("#columnasSlide").html() == 0 ) {
 
 	$("#columnasSlide").css({"height":"100px"});
@@ -83,14 +81,46 @@ $("#columnasSlide").on("drop", function(e){
 					
 					$("#columnasSlide").css({"height":"auto"});
 
-					$("#columnasSlide").prepend('<li class="bloqueSlide" <span class="fa fa-times"></span> <img src="' + res["ruta"].slice(6) +'" class="handleImg"></li>');					
+					$("#columnasSlide").prepend('<li class="bloqueSlide"><span class="fa fa-times EliminarSlide"></span> <img src="' + res["ruta"].slice(6) +'" class="handleImg"></li>');					
 
-					$("#ordenarTextSlide").append('<li><span class="fa fa-pencil" style="background:blue"></span> <img src="' + res["ruta"].slice(6) + '" style="float:left; margin-bottom:10px" width="80%"> <h1>' + res["titulo"] + '</h1> <p>' + res["descripcion"] + '</p> </li>');
+					$("#ordenarTextSlide").append('<li id = "' + $res["id"] + '"><span class="fa fa-pencil" style="background:blue"></span> <img src="' + res["ruta"].slice(6) + '" style="float:left; margin-bottom:10px" width="80%"> <h1>' + res["titulo"] + '</h1> <p>' + res["descripcion"] + '</p> </li>');
 					
 				}		
 			}
 		});
-	}
+	}	
 
-})
+});
+
+//eliminar item slide
+
+$(".EliminarSlide").click(function(){
+
+	idslide = $(this).parent().attr("id");	
+	rutaSlide = $(this).parent().attr("ruta");
+	
+	$(this).parent().remove();
+	$("#item"+idslide).parent().remove();
+
+	var BorrarId = new FormData();
+
+	BorrarId.append("idslide",idslide);	
+	BorrarId.append("rutaSlide",rutaSlide);	
+
+	$.ajax({
+		url: "views/ajax/GestorSlide.php",
+		method: "POST",
+		data: BorrarId,
+		cache: false,
+		contentType: false,
+		processData: false,			
+		success: function(res){	
+
+		Console.log(res);
+
+		}
+		 
+	});
+
+});
 
