@@ -1,5 +1,8 @@
 
-// AREA DE DESCARGA / ARRASTRE DE IMAGENES 
+
+//---------------------------------------------
+//   AREA DE DESCARGA / ARRASTRE DE IMAGENES 
+//---------------------------------------------
 
 if ($("#columnasSlide").html() == 0 ) {
 
@@ -9,8 +12,10 @@ if ($("#columnasSlide").html() == 0 ) {
 
 	$("#columnasSlide").css({"height":"auto"});
 }
-
+// -----------------
 // SUBIR IMAGEN
+// -----------------
+
 $("#columnasSlide").on("dragover", function(e){
 
 	e.preventDefault();
@@ -20,7 +25,10 @@ $("#columnasSlide").on("dragover", function(e){
 
 })
 
+// -----------------
 // SOLTAR IMAGEN
+// -----------------
+
 $("#columnasSlide").on("drop", function(e){
 
 	e.preventDefault();
@@ -30,8 +38,11 @@ $("#columnasSlide").on("drop", function(e){
 
 	var archivo = e.originalEvent.dataTransfer.files;
 	var imagen = archivo[0];
-	
+
+	// ----------------------------
 	// VALIDAR TAMAÑO DE IMAGEN
+	// ----------------------------
+
 	var imagensize = imagen.size;	
 
 	if (Number(imagensize) > 2000000) {
@@ -40,7 +51,9 @@ $("#columnasSlide").on("drop", function(e){
 		$(".alerta").remove();
 	}
 
+	// ----------------------------
 	// VALIDAR TIPO DE IMAGEN
+	// ----------------------------
 
 	var imagentype = imagen.type;
 	if (imagentype == "image/jpeg" || imagentype == "image/png") {
@@ -49,8 +62,9 @@ $("#columnasSlide").on("drop", function(e){
 		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">el archivo debe ser formato jpg o png</div>"')		
 	}
 
-
+	// ----------------------------
 	//SUBIR IMAGEN AL SERVIDOR
+	// ----------------------------
 
 	if (Number(imagensize) < 2000000 && imagentype == "image/jpeg" || imagentype == "image/png"){
 
@@ -70,57 +84,169 @@ $("#columnasSlide").on("drop", function(e){
 				$("#columnasSlide").before('<img src="views/images/status.gif" id="status" style="height:100px;width:100px">')
 			},
 			success: function(res){
+
+				console.log(res);
+
+			 	$("#status").remove();
+
+			 	if(res == 0){				
+
+			 		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen no cumple con la resolución</div>"')		
+
+			 	}else{			
+			
+			 		$("#columnasSlide").css({"height":"auto"});
+					
+					//----------------------------------------------
+					//estos elementos sobran si recargamos la pagina
+					//----------------------------------------------
+
+			 		//$("#columnasSlide").prepend('<li class="bloqueSlide"><span class="fa fa-times EliminarSlide"></span> <img src="' + res["ruta"].slice(6) +'" class="handleImg"></li>');					
+					//$("#ordenarTextSlide").append('<li id="item '+ res["id"] +'"><span class="fa fa-pencil" style="background:blue"></span> <img src="' + res["ruta"].slice(6) + '" style="float:left; margin-bottom:10px" width="80%"> <h1>' + res["titulo"] + '</h1> <p>' + res["descripcion"] + '</p> </li>');					
+					
+					//----------------------------------------------					
+					//----------------------------------------------
+
+					swal({
+						title: "¡OK!",
+						text: "¡La imagen subio correctamente!",
+						type: "success",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+						},
+						function(isConfirm){
 				
-				$("#status").remove();
-
-				if(res == 0){				
-
-					$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen no cumple con la resolución</div>"')		
-
-				}else{
-					
-					$("#columnasSlide").css({"height":"auto"});
-
-					$("#columnasSlide").prepend('<li class="bloqueSlide"><span class="fa fa-times EliminarSlide"></span> <img src="' + res["ruta"].slice(6) +'" class="handleImg"></li>');					
-
-					$("#ordenarTextSlide").append('<li id = "' + $res["id"] + '"><span class="fa fa-pencil" style="background:blue"></span> <img src="' + res["ruta"].slice(6) + '" style="float:left; margin-bottom:10px" width="80%"> <h1>' + res["titulo"] + '</h1> <p>' + res["descripcion"] + '</p> </li>');
-					
-				}		
+							if (isConfirm){				
+								window.location = "slide";
+							}
+					});
+			 	}		
 			}
 		});
 	}	
 
 });
 
-//eliminar item slide
+//--------------------------------
+//     ELIMINAR ITEM SLIDE 
+//--------------------------------
 
-$(".EliminarSlide").click(function(){
+ $(".EliminarSlide").click(function(){
 
+ 	if($(".eliminarSlide").length == 1){
+ 		$("#columnasSlide").css({"height":"100px"});
+	 }
+	 
 	idslide = $(this).parent().attr("id");	
 	rutaSlide = $(this).parent().attr("ruta");
-	
-	$(this).parent().remove();
-	$("#item"+idslide).parent().remove();
 
 	var BorrarId = new FormData();
-
-	BorrarId.append("idslide",idslide);	
-	BorrarId.append("rutaSlide",rutaSlide);	
+	 
+ 	BorrarId.append("idslide",idslide);	
+ 	BorrarId.append("rutaSlide",rutaSlide);	
 
 	$.ajax({
-		url: "views/ajax/GestorSlide.php",
-		method: "POST",
-		data: BorrarId,
-		cache: false,
-		contentType: false,
-		processData: false,			
-		success: function(res){	
+ 		url: "views/ajax/GestorSlide.php",
+ 		method: "POST",
+ 		data: BorrarId,
+ 		cache: false,
+ 		contentType: false,
+ 		processData: false,			
+ 		success: function(res){				
+						
+			swal({
+				title: "¡OK!",
+				text: "¡La imagen se elimino correctamente!",
+				type: "success",
+				confirmButtonText: "Cerrar",
+				closeOnConfirm: false
+				},
+				function(isConfirm){
+		
+					if (isConfirm){				
+						window.location = "slide";
+					}
+			});				
+		} 		 
+ 	});
+});
 
-		Console.log(res);
+//---------------------
+//EDITAR ITEM SLIDE
+//---------------------
 
-		}
-		 
+$(".editarSlide").click(function(){
+
+	editarIdSlide = $(this).parent().attr("id");
+	
+	//obtener información del elemento seleccionado
+	imgItemSlide = $(this).parent().children("img").attr("src");
+	tituloItemSlide = $(this).parent().children("h1").html();
+	infoItemSlide = $(this).parent().children("p").html();
+
+	$(this).parent().html('<img src="' + imgItemSlide + '" class="img-thumbnail"><input type="text" class="form-control" id = "titulo' + editarIdSlide +'" placeholder="Título" value="' + tituloItemSlide + '"><textarea row="5" class="form-control" id = "Descripcion' + editarIdSlide +'" placeholder="Descripción">' + infoItemSlide + '</textarea><button class="btn btn-info pull-right" id = "guardar' + editarIdSlide +'" style="margin:10px">Guardar</button>');
+
+	//GUARDAR INFORMACIÓN DEL ITEM
+
+	$("#guardar"+editarIdSlide).click(function(){
+
+		cargarTituloItem = $("#titulo"+editarIdSlide).val();
+		cargarDescripcionItem = $("#Descripcion"+editarIdSlide).val();
+
+		console.log("Prueba"+cargarDescripcionItem);
+
+		//VALIDAR INFORMACIÓN
+		if(cargarTituloItem == "" || cargarDescripcionItem == ""){
+			//ALERTA SI NO TENEMOS NINGUN VALOR			
+			if(cargarTituloItem == ""){										
+				$("#titulo"+editarIdSlide).css({"border-color":"red"});
+			}else{
+				$("#titulo"+editarIdSlide).css({"border-color":"rgb(204, 204, 204)"});
+			}
+
+			if(cargarDescripcionItem == ""){								
+				$("#Descripcion"+ editarIdSlide).css({"border-color":"red"});
+			}else{
+				$("#Descripcion"+ editarIdSlide).css({"border-color":"rgb(204, 204, 204)"});
+			}	
+		}else{
+
+			var GuardarDatos = new FormData();
+			GuardarDatos.append("editarIdSlide",editarIdSlide.slice(4));
+			GuardarDatos.append("tituloItemSlide",cargarTituloItem);
+			GuardarDatos.append("infoItemSlide",cargarDescripcionItem);
+
+			$.ajax({
+				url: "views/ajax/GestorSlide.php",
+				method: "POST",
+				data: GuardarDatos,
+				cache: false,
+				contentType: false,
+				processData: false,
+				success: function(res){
+		
+				}
+			});
+
+		}		
+
 	});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
 });
 

@@ -4,8 +4,9 @@
 	require_once "../../controllers/GestorSlide.php";
 	
 	class Ajax{
-
+		//----------------------------
 		//CARGAR IMAGEN BD AJAX
+		//----------------------------
 
 		public $nombreImagen;
 		public $imagenTemporal;
@@ -19,23 +20,39 @@
 			echo $res;
 		}
 
+		//------------------------------
 		//ELIMINAR IMAGEN BD AJAX
+		//------------------------------
 
-		public $IdSlide;
-		public $RutaSlide;
+		 public $IdSlide;
+		 public $RutaSlide;
 
-		public function EliminarImageSlideAjax(){
+		 public function EliminarImageSlideAjax(){
 
-			$datos = array("IdSlide" => $this->IdSlide, "rutaSlide" => $this->RutaSlide);
+		 	$datos = array("IdSlide" => $this->IdSlide, "rutaSlide" => $this->RutaSlide);
 
-			$res = GestorSlideController::EliminarImagesSlideController($datos);
+		 	$res = GestorSlideController::EliminarImagesSlideController($datos);
 
-			echo $res;
+		 	echo $res;
 		}
+		// -------------------------
+		// EDITAR DATOS DEL SLIDE
+		// -------------------------
+		public $IdEditarSlide;
+		public $tituloItemSlide;
+		public $infoItemSlide;
+
+		public function editarDatosSlideAjax(){
+		
+			$datos = array("IdEditarSlide" => $this->IdEditarSlide, "tituloItemSlide" => $this->tituloItemSlide, "infoItemSlide" => $this->infoItemSlide);
+			
+						
+		}
+
 
 	}
 
-	
+	//OBTENIENDO DATOS DEL JS(AJAX)
 
 	if(isset($_FILES["imagen"]["name"])){
 		$imagen = new Ajax();
@@ -50,3 +67,13 @@
 		$eliminar -> RutaSlide = $_POST["rutaSlide"];
 		$eliminar -> EliminarImageSlideAjax();
 	}
+
+	if(isset($_POST["editarIdSlide"])){
+		$cargar = new Ajax();
+		$cargar -> IdEditarSlide = $_POST["IdEditarSlide"];
+		$cargar -> tituloItemSlide = $_POST["tituloItemSlide"];
+		$cargar -> infoItemSlide = $_POST["infoItemSlide"];
+		$cargar -> editarDatosSlideAjax();
+	}
+
+

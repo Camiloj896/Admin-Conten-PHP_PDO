@@ -2,7 +2,9 @@
 
 class GestorSlideController{
 
-	#MOSTRAR IMAGEN SLIDE CON AJAX
+	//-------------------------------
+	// MOSTRAR IMAGEN SLIDE CON AJAX
+	//-------------------------------
 
 	public function MostrarImagenController($datos){
 
@@ -35,7 +37,9 @@ class GestorSlideController{
 		}	
 	}
 
-	#MOSTRAR LAS IMAGENES DEL SLICE ALMACENADAS
+	//----------------------------------------------
+	//MOSTRAR LAS IMAGENES DEL SLICE ALMACENADAS
+	//----------------------------------------------
 
 	public function MostrarImagesVistaSlideController(){
 
@@ -49,34 +53,49 @@ class GestorSlideController{
 		}		
 
 	}
-
-	#MOSTRAR LAS IMAGENES ALMACENADAS Y SU INFORMACION
+	
+	//----------------------------------------------------
+	//MOSTRAR LAS IMAGENES ALMACENADAS Y SU INFORMACION
+	//----------------------------------------------------
 
 	public function MostrarInfoImagesVistaController(){
 
 		$res = GestorSlideModels::MostrarImagesVistaModel("slide");
 
 		foreach ($res as $row => $item){
-			echo '<li id="item"'. $item["id"] .'>
+			echo '<li id="item'. $item["id"] .'">
 					<span class="fa fa-pencil editarSlide" style="background:blue"></span>
 					<img src="' . substr($item["ruta"], 6) . '" style="float:left; margin-bottom:10px" width="80%">
 					<h1>' . $item["titulo"] . '</h1>
-					<p> ' . $item["descripcion"] . '</p>
+					<p>' . $item["descripcion"] . '</p>
 				</li>';
 		}		
 
 	}
 
-	#ELIMINAR IMAGENES ALMACENADAS
+	//--------------------------------
+	//ELIMINAR IMAGENES ALMACENADAS
+	//--------------------------------
 
-	public function EliminarImagesSlideController($datos){		
+	 public function EliminarImagesSlideController($datos){		
 
 		$res = GestorSlideModels::EliminarImagesSlideModel("slide", $datos);
-
-		unlink($datos["rutaSlide"]);
-
-		echo $res;		
+		 		 
+		unlink($datos["rutaSlide"]); // OJO ESTO NO FUNCIONA BUSCAR EN INTERNET
+		echo "OK";	
 
 	}
+
+	// ----------------------
+	// CARGAR DATOS SLIDE
+	// ----------------------
+
+	public function editarDatosSlideController($datos){
+
+		$res = GestorSlideModels::editarDatosSlideModel("slide", $datos);
+
+	}
+
+
 
 }
