@@ -4,7 +4,13 @@ class Conexion{
 
     public function Conectar(){
 
-        $link = new PDO("mysql:host=localhost;dbname=cms","root","");
+        $server = "localhost";
+        $dbName = "cms";
+        $usuario = "root";
+        $pass = "";
+
+        $link = new PDO("mysql:host=".$server.";dbname=".$dbName."","".$usuario."","".$pass."");
+        
         return $link;
 
     }

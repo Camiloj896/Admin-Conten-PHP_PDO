@@ -4,7 +4,6 @@
 
 	if (!$_SESSION["validar"]) {
 		header ("location:ingreso");
-
 		exit();
 	}
 
@@ -19,35 +18,41 @@ ARTÍCULOS ADMINISTRABLE
 
 <div id="seccionArticulos" class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
 	
-	<button class="btn btn-info btn-lg">Agregar Artículo</button>
+	<button id="ArticuloNuevo" class="btn btn-info btn-lg">Agregar Artículo</button>
 
 	<!--==== AGREGAR ARTÍCULO  ====-->
 
 	<div id="agregarArtículo">
+
+		<form method="POST" enctype="multipart/form-data">
+
+			<div class="alert alert-warning" id="errorArt" style="display:none;"><strong>Complete la información!</strong></div>
+			
+			<input type="text" placeholder="Título del Artículo" class="form-control" id="titulo">
+
+			<textarea name="" id="introduccion"  maxlength = "170" cols="30" rows="5" placeholder="Introducción del Articulo" class="form-control"></textarea>
+
+			<input type="file" name="imagen" class="btn btn-default" id="subirFoto" required>
+
+			<p>Tamaño recomendado: 800px * 400px, peso máximo 2MB</p>
+
+			<div id="arrastreImagenArticulo">	
+				
+			</div>
+
+			<textarea name="" id="contenido" cols="30" rows="10" placeholder="Contenido del Articulo" class="form-control"></textarea>
+
+			<input type="submit" id="guardarArticulo" class="btn btn-primary" value="Guardar Artículo">
 		
-		<input type="text" placeholder="Título del Artículo" class="form-control">
+		</form>
 
-		<textarea name="" id="" cols="30" rows="5" placeholder="Introducción del Articulo" class="form-control"></textarea>
-
-		<input type="file" name="imagen" class="btn btn-default" id="subirFoto" required>
-
-		<p>Tamaño recomendado: 800px * 400px, peso máximo 2MB</p>
-
-		<div id="arrastreImagenArticulo">	
-			<div id="imagenArticulo"><img src="views/images/articulos/landscape01.jpg" class="img-thumbnail"></div>
-		</div>
-
-		<textarea name="" id="" cols="30" rows="10" placeholder="Contenido del Articulo" class="form-control"></textarea>
-
-		<button id="guardarArticulo" class="btn btn-primary">Guardar Artículo</button>
-
-	</div>
+	</div> 
 
 	<hr>
 
 	<!--==== EDITAR ARTÍCULO  ====-->
 
-	<ul id="editarArticulo">
+	<!-- <ul id="editarArticulo">
 
 		<li>
 			<span>
@@ -86,7 +91,7 @@ ARTÍCULOS ADMINISTRABLE
 
 	<button class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Artículos</button>
 
-</div>
+</div> -->
 
 <!--====  Fin de ARTÍCULOS ADMINISTRABLE  ====-->
 
@@ -94,7 +99,7 @@ ARTÍCULOS ADMINISTRABLE
 ARTÍCULO MODAL         
 ======================================-->
 
-<div id="articulo1" class="modal fade">
+<!-- <div id="articulo1" class="modal fade">
 
 		<div class="modal-dialog modal-content">
 
@@ -120,6 +125,6 @@ ARTÍCULO MODAL
 
 		</div>
 
-</div>
+</div> -->
 
 <!--====  Fin de ARTICULO MODAL ====-->

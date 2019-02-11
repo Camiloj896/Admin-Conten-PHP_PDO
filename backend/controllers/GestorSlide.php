@@ -68,8 +68,8 @@ class GestorSlideController{
 					<img src="' . substr($item["ruta"], 6) . '" style="float:left; margin-bottom:10px" width="80%">
 					<h1>' . $item["titulo"] . '</h1>
 					<p>' . $item["descripcion"] . '</p>
-				</li>';
-		}		
+				</li>';			
+		}			
 
 	}
 
@@ -94,7 +94,50 @@ class GestorSlideController{
 
 		$res = GestorSlideModels::editarDatosSlideModel("slide", $datos);
 
+		if($res){
+			echo "bien";
+		}else{
+			echo "mal";
+		}
+
 	}
+
+	// -------------------------
+	// ALMACENAR ORDEN DEL SLIDE
+	// -------------------------
+
+	public function almacenarOrdenSlideController($datos){
+
+		$res = GestorSlideModels::almacenarOrdenSlideModel("slide", $datos);
+		if($res){
+			echo "bien";
+		}else{
+			echo "mal";
+		}
+
+	}
+
+	// --------------------------------------------
+    // MOSTRAR IMAGENES PARA EL SLICE
+    // --------------------------------------------
+
+    public function mostrarImagesSlideVista(){
+
+        $res = GestorSlideModels::MostrarImagesVistaModel("slide");
+
+        foreach($res as $row => $item){
+            echo '<li>
+                    <img src="'. substr($item["ruta"], 6) .'">
+                    <div class="slideCaption">
+                        <h3>'. $item["titulo"] .'</h3>
+                        <p>'. $item["descripcion"] .'</p>
+                    </div>
+                </li>';
+        }
+
+    }
+
+	
 
 
 

@@ -55,6 +55,7 @@
 	<script src="views/js/script.js"></script>
 	<script src="views/js/ValidaUsuario.js"></script>
 	<script src="views/js/GestorSlide.js"></script>
+	<script src="views/js/GestorArticulo.js"></script>
 	
 </body>
 

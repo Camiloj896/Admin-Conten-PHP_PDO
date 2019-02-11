@@ -37,6 +37,10 @@ $("#slide ul li").css({"width": (100/cantidadImg) + "%"})
 
 /* INDICADORES */
 
+for(var i=0; i < cantidadImg; i++){
+	$("#indicadores").append('<li role-slide = "'+(i+1)+'"><span class="fa fa-circle"></span></li>');	
+}
+
 $("#indicadores li").click(function(){
 
 	 var roleSlide = $(this).attr("role-slide");
@@ -178,56 +182,56 @@ ORDENAR SLIDE
 var almacenarOrdenImagen = new Array();
 var cambioOrdenImagen = false;
 
-$("#ordenarSlide").click(function(){
+// $("#ordenarSlide").click(function(){
 
-	$( "#columnasSlide").css({"cursor":"move"})
-	$( "#columnasSlide span").hide()
+	// $( "#columnasSlide").css({"cursor":"move"})
+	// $( "#columnasSlide span").hide()
 		 
-	$( "#columnasSlide").sortable({
-      	revert: true,
-      	connectWith: ".bloqueSlide",
-      	handle: ".handleImg",	
-      	stop: function( event, ui ) {
+	// $( "#columnasSlide").sortable({
+    //   	revert: true,
+    //   	connectWith: ".bloqueSlide",
+    //   	handle: ".handleImg",	
+    //   	stop: function( event, ui ) {
 
-      	cambioOrdenImagen = true;
+    //   	cambioOrdenImagen = true;
 
-      	for(var i= 0; i < $( "#columnasSlide li").length; i++){
+    //   	for(var i= 0; i < $( "#columnasSlide li").length; i++){
 
-      		almacenarOrdenImagen[i] = event.target.children[i].children[1].src;
+    //   		almacenarOrdenImagen[i] = event.target.children[i].children[1].src;
       		
-      		}
-      	}
-    })
+    //   		}
+    //   	}
+    // })
 
-    $("#ordenarSlide").hide();
-    $("#guardarSlide").show();
+    // $("#ordenarSlide").hide();
+    // $("#guardarSlide").show();
 
-})
+// })
 
 /* Guardar Orden Slide */ 
 
-$("#guardarSlide").click(function(){
+// $("#guardarSlide").click(function(){
 
-	if(cambioOrdenImagen){
+	// if(cambioOrdenImagen){
 
-		$("#textoSlide ul").html("")
+	// 	$("#textoSlide ul").html("")
 
-		for(var i= 0; i < $( "#columnasSlide li").length; i++){
+	// 	for(var i= 0; i < $( "#columnasSlide li").length; i++){
 
-	      	$("#textoSlide ul").append('<li><span class="fa fa-pencil" style="background:blue"></span><img src="'+almacenarOrdenImagen[i]+'" style="float:left; margin-bottom:10px" width="80%"><h1></h1><p></p></li>')
-	      	}
-     }
+	//       	$("#textoSlide ul").append('<li><span class="fa fa-pencil" style="background:blue"></span><img src="'+almacenarOrdenImagen[i]+'" style="float:left; margin-bottom:10px" width="80%"><h1></h1><p></p></li>')
+	//       	}
+    //  }
 
-	$("#columnasSlide").css({"cursor":"auto"})
-	$("#columnasSlide span").show()
+	// $("#columnasSlide").css({"cursor":"auto"})
+	// $("#columnasSlide span").show()
 
-	$("#columnasSlide").disableSelection();
+	// $("#columnasSlide").disableSelection();
 
-	$("#ordenarSlide").show();
+	// $("#ordenarSlide").show();
 
-	$("#guardarSlide").hide();
+	// $("#guardarSlide").hide();
 
-})
+// })
 
 
 /*=====  Fin de ORDENAR SLIDE   ======*/

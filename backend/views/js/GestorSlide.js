@@ -46,7 +46,7 @@ $("#columnasSlide").on("drop", function(e){
 	var imagensize = imagen.size;	
 
 	if (Number(imagensize) > 2000000) {
-		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">el archivo excede el peso permitido,200kb</div>"')
+		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">el archivo excede el peso permitido,200kb</div>"');
 	}else {
 		$(".alerta").remove();
 	}
@@ -59,7 +59,7 @@ $("#columnasSlide").on("drop", function(e){
 	if (imagentype == "image/jpeg" || imagentype == "image/png") {
 		$(".alerta").remove();
 	}else {
-		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">el archivo debe ser formato jpg o png</div>"')		
+		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">el archivo debe ser formato jpg o png</div>"');		
 	}
 
 	// ----------------------------
@@ -91,7 +91,7 @@ $("#columnasSlide").on("drop", function(e){
 
 			 	if(res == 0){				
 
-			 		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen no cumple con la resolución</div>"')		
+			 		$("#columnasSlide").before('<div class="alert alert-warning alerta text-center">la imagen no cumple con la resolución</div>"');	
 
 			 	}else{			
 			
@@ -193,8 +193,6 @@ $(".editarSlide").click(function(){
 		cargarTituloItem = $("#titulo"+editarIdSlide).val();
 		cargarDescripcionItem = $("#Descripcion"+editarIdSlide).val();
 
-		console.log("Prueba"+cargarDescripcionItem);
-
 		//VALIDAR INFORMACIÓN
 		if(cargarTituloItem == "" || cargarDescripcionItem == ""){
 			//ALERTA SI NO TENEMOS NINGUN VALOR			
@@ -212,7 +210,7 @@ $(".editarSlide").click(function(){
 		}else{
 
 			var GuardarDatos = new FormData();
-			GuardarDatos.append("editarIdSlide",editarIdSlide.slice(4));
+			GuardarDatos.append("idItem",editarIdSlide.slice(4));
 			GuardarDatos.append("tituloItemSlide",cargarTituloItem);
 			GuardarDatos.append("infoItemSlide",cargarDescripcionItem);
 
@@ -224,7 +222,36 @@ $(".editarSlide").click(function(){
 				contentType: false,
 				processData: false,
 				success: function(res){
-		
+			
+					if(res == "bien"){
+						swal({
+							title: "¡OK!",
+							text: "¡se  actualizo correctamente!",
+							type: "success",
+							confirmButtonText: "Cerrar",
+							closeOnConfirm: false
+							},
+							function(isConfirm){
+					
+								if (isConfirm){				
+									window.location = "slide";
+								}
+						});		
+					}else{
+						swal({
+							title: "Error!",
+							text: "¡La información no se actualizo!",
+							type: "error",
+							confirmButtonText: "Cerrar",
+							closeOnConfirm: false
+							},
+							function(isConfirm){
+					
+								if (isConfirm){				
+									window.location = "slide";
+								}
+						});
+					}
 				}
 			});
 
@@ -232,21 +259,84 @@ $(".editarSlide").click(function(){
 
 	});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
 });
 
+//---------------------
+//ORDENAR ITEM SLIDE
+//---------------------
+
+var almacenarOrdenId = new Array();
+var ordenItem = new Array();
+
+$("#ordenarSlide").click(function(){
+	
+	$("#ordenarSlide").hide();
+	$("#guardarSlide").show();
+
+	$( "#columnasSlide").css({"cursor":"move"});
+	$( "#columnasSlide span").hide();
+		
+	$( "#columnasSlide").sortable({
+		revert: true,
+		connectWith: ".bloqueSlide",
+		handle: ".handleImg",	
+		stop: function(event) {
+
+			for(var i= 0; i < $( "#columnasSlide li").length; i++){
+
+				almacenarOrdenId[i] = event.target.children[i].id;
+				ordenItem[i] = i+1;
+
+			}
+		}
+	
+	});
+
+});
+
+$("#guardarSlide").click(function(){
+	
+	$("#guardarSlide").hide();
+	$("#ordenarSlide").show();
+
+	$("#columnasSlide").css({"cursor":"auto"});
+	$( "#columnasSlide span").show();
+
+	for(var i= 0; i < $( "#columnasSlide li").length; i++){
+
+		var almacenarOrden = new FormData();
+		
+		almacenarOrden.append("idItemOrden", almacenarOrdenId[i]);
+		almacenarOrden.append("ordenItem", ordenItem[i]);
+
+		$.ajax({
+			url: "views/ajax/GestorSlide.php",
+			method: "POST",
+			data: almacenarOrden,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(res){
+				console.log("respuesta controlador:", res);
+				if( i == $( "#columnasSlide li").length){
+					swal({
+						title: "¡OK!",
+						text: "¡se  actualizo correctamente!",
+						type: "success",
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+						},
+						function(isConfirm){
+				
+							if (isConfirm){				
+								window.location = "slide";
+							}
+					});	
+				}
+			}
+		});
+
+	}
+
+
+});

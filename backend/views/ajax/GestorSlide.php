@@ -44,11 +44,27 @@
 
 		public function editarDatosSlideAjax(){
 		
-			$datos = array("IdEditarSlide" => $this->IdEditarSlide, "tituloItemSlide" => $this->tituloItemSlide, "infoItemSlide" => $this->infoItemSlide);
+			$datos = array("IdItem" => $this->IdEditarSlide, "tituloItemSlide" => $this->tituloItemSlide, "infoItemSlide" => $this->infoItemSlide);
+
+			$res = GestorSlideController::editarDatosSlideController($datos);		
 			
-						
 		}
 
+		// -------------------------
+		// ALMACENAR ORDEN DEL SLIDE
+		// -------------------------
+
+		public $ordenItem;
+		public $idItemOrden;
+
+		public function almacenarOrdenSlideAjax(){
+
+			$datos = array("idItemOrden" => $this->idItemOrden, "ordenItem" => $this->ordenItem);
+			$res = GestorSlideController::almacenarOrdenSlideController($datos);
+			
+			echo $res;
+
+		}
 
 	}
 
@@ -68,12 +84,19 @@
 		$eliminar -> EliminarImageSlideAjax();
 	}
 
-	if(isset($_POST["editarIdSlide"])){
+	if(isset($_POST["idItem"])){
 		$cargar = new Ajax();
-		$cargar -> IdEditarSlide = $_POST["IdEditarSlide"];
+		$cargar -> IdEditarSlide = $_POST["idItem"];
 		$cargar -> tituloItemSlide = $_POST["tituloItemSlide"];
 		$cargar -> infoItemSlide = $_POST["infoItemSlide"];
 		$cargar -> editarDatosSlideAjax();
+	}
+
+	if(isset($_POST["idItemOrden"])){
+		$guardar = new Ajax();
+		$guardar -> idItemOrden = $_POST["idItemOrden"];
+		$guardar -> ordenItem = $_POST["ordenItem"];
+		$guardar -> almacenarOrdenSlideAjax();			
 	}
 
 

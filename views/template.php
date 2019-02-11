@@ -77,7 +77,7 @@
 
 	?>
 
-<script src="js/script.js"></script>
+<script src="views/js/script.js"></script>
 
 </body>
 </html>
