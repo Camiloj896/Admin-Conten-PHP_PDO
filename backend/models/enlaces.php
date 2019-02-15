@@ -15,11 +15,11 @@ class EnlacesModels{
             $Enlaces == "perfil" ||
             $Enlaces == "salir"){
                 
-                $module = "views/modules/" . $Enlaces . ".php";
+            $module = "views/modules/" . $Enlaces . ".php";
 
         }else if ($Enlaces == "index"){
 
-                $module = "views/modules/ingreso.php";
+            $module = "views/modules/ingreso.php";
 
         }else{
 

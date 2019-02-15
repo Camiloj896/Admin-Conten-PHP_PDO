@@ -24,13 +24,13 @@ ARTÍCULOS ADMINISTRABLE
 
 	<div id="agregarArtículo">
 
-		<form method="POST" enctype="multipart/form-data">
+		<form method="POST" enctype="multipart/form-data" onsubmit="validarForm()">
 
 			<div class="alert alert-warning" id="errorArt" style="display:none;"><strong>Complete la información!</strong></div>
 			
-			<input type="text" placeholder="Título del Artículo" class="form-control" id="titulo">
+			<input type="text" name = "tituloAr" placeholder="Título del Artículo" class="form-control" id="titulo">
 
-			<textarea name="" id="introduccion"  maxlength = "170" cols="30" rows="5" placeholder="Introducción del Articulo" class="form-control"></textarea>
+			<textarea name="introduccionAr" id="introduccion"  maxlength = "170" cols="30" rows="5" placeholder="Introducción del Articulo" class="form-control"></textarea>
 
 			<input type="file" name="imagen" class="btn btn-default" id="subirFoto" required>
 
@@ -40,7 +40,7 @@ ARTÍCULOS ADMINISTRABLE
 				
 			</div>
 
-			<textarea name="" id="contenido" cols="30" rows="10" placeholder="Contenido del Articulo" class="form-control"></textarea>
+			<textarea name="contenidoAr" id="contenido" cols="30" rows="10" placeholder="Contenido del Articulo" class="form-control"></textarea>
 
 			<input type="submit" id="guardarArticulo" class="btn btn-primary" value="Guardar Artículo">
 		
@@ -48,83 +48,41 @@ ARTÍCULOS ADMINISTRABLE
 
 	</div> 
 
+	<!-- ALMACENANDO DATOS DEL ARTICULO
+    //------------------------------------ -->
+
+	<?php
+
+		$datosArticulo = new GestorArticuloController();
+		$datosArticulo -> cargarDatosArticuloController();
+	
+	?>
+
 	<hr>
 
 	<!--==== EDITAR ARTÍCULO  ====-->
 
-	<!-- <ul id="editarArticulo">
+	<ul id="editarArticulo">
+		<?php
 
-		<li>
-			<span>
-			<i class="fa fa-times btn btn-danger"></i>
-			<i class="fa fa-pencil btn btn-primary"></i>	
-			</span>
-			<img src="views/images/articulos/landscape02.jpg" class="img-thumbnail">
-			<h1>Lorem Ipsum</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-			<a href="#articulo1" data-toggle="modal">
-			<button class="btn btn-default">Leer Más</button>
-			</a>
+			$articulos = new GestorArticuloController();
+			$articulos -> mostrarDatosArticulosController();
+			$articulos -> borrarArticuloController();
+			$articulos -> actualizarDatosArticuloController();
 
-			<hr>
-
-		</li>
-
-		<li>
-			<span>
-			<button class="btn btn-primary pull-right">Guardar</button>	
-			</span>
-
-			<div id="editarImagen"><span class="fa fa-times"></span><img src="views/images/articulos/landscape03.jpg" class="img-thumbnail"></div>
-
-			<input type="text" value="Lorem Ipsum">
-			
-			<textarea cols="30" rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-
-			<textarea name="" id="editarContenido" cols="30" rows="10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
-			
-			<hr>
-
-		</li>
+		?>
 
 	</ul>
 
-	<button class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Artículos</button>
+	<button class="btn btn-warning pull-right" id="OrdenArticulos" style="margin:10px 30px">Ordenar Artículos</button>
+	<button class="btn btn-primary pull-right" id="GuardarOrdenArticulos" style="margin:10px 30px;display:none;">Guardar Orden Artículos</button>
 
-</div> -->
+</div>
 
 <!--====  Fin de ARTÍCULOS ADMINISTRABLE  ====-->
 
 <!--=====================================
 ARTÍCULO MODAL         
 ======================================-->
-
-<!-- <div id="articulo1" class="modal fade">
-
-		<div class="modal-dialog modal-content">
-
-		 <div class="modal-header" style="border:1px solid #eee">
-        
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		 <h3 class="modal-title">Lorem Ipsum</h3>
-        
-	</div>
-
-	<div class="modal-body" style="border:1px solid #eee">
-        
-	<img src="views/images/articulos/landscape02.jpg" width="100%" style="margin-bottom:20px">
-	<p class="parrafoContenido">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        
-	</div>
-
-	<div class="modal-footer" style="border:1px solid #eee">
-        
-	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        
-	</div>
-
-		</div>
-
-</div> -->
 
 <!--====  Fin de ARTICULO MODAL ====-->

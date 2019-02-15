@@ -68,7 +68,9 @@
 
 	}
 
-	//OBTENIENDO DATOS DEL JS(AJAX)
+	// ----------
+	//  OBJETOS
+	//-----------
 
 	if(isset($_FILES["imagen"]["name"])){
 		$imagen = new Ajax();

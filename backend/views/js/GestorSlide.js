@@ -316,8 +316,7 @@ $("#guardarSlide").click(function(){
 			cache: false,
 			contentType: false,
 			processData: false,
-			success: function(res){
-				console.log("respuesta controlador:", res);
+			success: function(res){				
 				if( i == $( "#columnasSlide li").length){
 					swal({
 						title: "¡OK!",
