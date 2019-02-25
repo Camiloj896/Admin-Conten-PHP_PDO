@@ -408,6 +408,8 @@ GALERÍA
 
 #galeria ul li img{
 	position:relative;
+	width: 150px;
+    height: 150px;
 }
 
 /*=====  Fin de GALERÍA ======*/

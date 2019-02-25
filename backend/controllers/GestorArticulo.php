@@ -269,4 +269,18 @@ class GestorArticuloController{
         }
 
     }
+
+    //ACTUALIZAR ORDEN ARTICULOS
+    //-----------------------------------------
+
+    public function actualizarOrdenArticulosController($datos){
+
+        $res = GestorArticuloModel::actualizarOrdenArticulosModel("articulos", $datos);
+
+        if($res){
+            echo "bien";
+        }else{
+            echo "mal";
+        }
+    }
 }

@@ -22,67 +22,17 @@ GALERIA ADMINISTRABLE
 
 <hr>
 
-<p><span class="fa fa-arrow-down"></span>  Arrastra aquí tu imagen, tamaño recomendado: 1600px * 600px</p>
+<p><span class="fa fa-arrow-down"></span>  Arrastra aquí tu imagen, (tamaño recomendado: 1024px * 768px, peso permitido 2mb)</p>
 	
 	<ul id="lightbox">
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo01.jpg">
-			<img src="views/images/galeria/photo01.jpg">
-			</a>
-		</li>
-			
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo02.jpg">
-			<img src="views/images/galeria/photo02.jpg">
-			</a>		
-		</li>
+		<?php
+			$galeria = new GestorGaleriaController();
+			$galeria -> mostrarImagenesGaleriaController();
+		?>
+	</ul> 
 
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo03.jpg">
-			<img src="views/images/galeria/photo03.jpg">
-			</a>		
-		</li>
-
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo04.jpg">
-			<img src="views/images/galeria/photo04.jpg">
-			</a>		
-		</li>
-
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo01.jpg">
-			<img src="views/images/galeria/photo01.jpg">
-			</a>
-		</li>
-			
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo02.jpg">
-			<img src="views/images/galeria/photo02.jpg">
-			</a>		
-		</li>
-
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo03.jpg">
-			<img src="views/images/galeria/photo03.jpg">
-			</a>		
-		</li>
-
-		<li>
-			<span class="fa fa-times"></span>
-			<a rel="grupo" href="views/images/galeria/photo04.jpg">
-			<img src="views/images/galeria/photo04.jpg">
-			</a>		
-		</li>
-	</ul>
-
-	<button class="btn btn-warning pull-right" style="margin:10px 30px">Ordenar Imágenes</button>
+	<button class="btn btn-warning pull-right" id="OrdenarGaleria" style="margin:10px 30px">Ordenar Imágenes</button>
+	<button class="btn btn-primary pull-right" id="GuardarOrdenar" style="margin:10px 30px;display:none;">Guardar Orden</button>
 
 </div>
 

@@ -81,7 +81,7 @@ $("#columnasSlide").on("drop", function(e){
 			processData: false,
 			dataType: "json",
 			beforeSend: function(){
-				$("#columnasSlide").before('<img src="views/images/status.gif" id="status" style="height:100px;width:100px">')
+				$("#columnasSlide").before('<img src="views/images/status.gif" id="status" style="height:100px;width:100px">');
 			},
 			success: function(res){
 

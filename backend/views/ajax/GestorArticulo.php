@@ -28,14 +28,13 @@ class GestorAticuloajax{
 
     public function actualizarOrdenArticulosAjax(){
 
-        $datos = array("idItemOrden" => $this->idArticulo, "ordenItem" => $this->ordenItem);
-        $res = GestorArticuloController::actualizarOrdenArticulosAjax($datos);
+        $datos = array("idItemOrden" => $this->idArticulo, "ordenItem" => $this->ordenArticulo);
+        $res = GestorArticuloController::actualizarOrdenArticulosController($datos);        
         echo $res;
         
     }
    
 }
-
 
 // OBJETOS
 //---------------------------------------------------------------------
@@ -49,10 +48,10 @@ if(isset($_FILES["imagen"]["tmp_name"])){
 
 //ORDEN ARTICULOS
 
-if(isset($_POST["idItemOrden"])){
+if(isset($_POST["idItemArticulos"])){
     $b = new GestorAticuloajax();
-    $b -> idArticulo = $_POST["idItemOrden"];
-    $b -> ordenArticulo = $_POST["ordenItem"];
+    $b -> idArticulo = $_POST["idItemArticulos"];
+    $b -> ordenArticulo = $_POST["actualizarOrdenArticulos"];
     $b -> actualizarOrdenArticulosAjax();
 }
 

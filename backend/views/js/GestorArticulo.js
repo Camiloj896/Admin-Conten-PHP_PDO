@@ -154,9 +154,7 @@ $(".editarArticulo").click(function(){
                             $("#subirNuevaFoto").parent().parent().before('<div class="alert alert-warning" id="alert"><strong>la imagen no cumple el tamaño minimo 800 * 400!</strong></div>');
                         }else{
                             $("#alert").remove();
-                            $("#nuevaFoto").html('<img src="'+res.slice(6)+'" class="img-thumbnail">'); 
-                            console.log("imagen actual:",imagenActual);
-                            console.log("ruta:",res.slice(6));
+                            $("#nuevaFoto").html('<img src="'+res.slice(6)+'" class="img-thumbnail">');                             
                         }
                     }
                 })
@@ -218,7 +216,7 @@ $("#OrdenArticulos").click(function(){
             var actualizarOrden = new FormData();
             actualizarOrden.append("idItemArticulos", almacenarOrdenId[i]);
             actualizarOrden.append("actualizarOrdenArticulos", ordenItem[i]);
-            
+                        
             $.ajax({
                 url: "views/ajax/GestorArticulo.php",
                 method: "POST",
@@ -227,6 +225,7 @@ $("#OrdenArticulos").click(function(){
                 contentType: false,
                 processData: false,
                 success: function(res){
+                    console.log(res);
                     if(res == "bien" && i == $("#editarArticulo li").length){
                         swal({
                             title: "¡OK!",
@@ -238,10 +237,10 @@ $("#OrdenArticulos").click(function(){
                         function(isConfirm){
                                 if (isConfirm) {	   
                                     window.location = "articulos";
-                                    } 
+                                } 
                         });
                     }
-                }
+                }    
             })
         }
     })

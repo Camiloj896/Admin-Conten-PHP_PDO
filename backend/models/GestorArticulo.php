@@ -85,4 +85,25 @@ class GestorArticuloModel{
 
     }
 
+    //ACTUALIZAR ORDEN ARTICULOS
+    //-----------------------------------------
+
+    public function actualizarOrdenArticulosModel($tabla, $datosModel){
+
+        $stmt = Conexion::Conectar() -> prepare("UPDATE $tabla SET orden = :orden WHERE id = :id");
+        $stmt -> bindParam("orden", $datosModel["ordenItem"], PDO::PARAM_STR);
+        $stmt -> bindParam("id", $datosModel["idItemOrden"], PDO::PARAM_STR);
+
+        if($stmt -> execute()){
+            return true;
+        }else{
+            return false;
+        }
+
+        $stmt -> close();
+
+    }
+
+
+
 }
