@@ -57,6 +57,7 @@
 	<script src="views/js/GestorSlide.js"></script>
 	<script src="views/js/GestorArticulo.js"></script>
 	<script src="views/js/GestorGaleria.js"></script>	
+	<script src="views/js/GestorVideos.js"></script>
 	
 </body>
 

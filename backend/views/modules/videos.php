@@ -20,16 +20,32 @@ VIDEOS ADMINISTRABLE
 
 <div id="videos" class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
 
-<form method="post" action="validarVideo.php" enctype="multipart/form-data">
+<hr>
 
-	 	<input type="file" name="video" class="btn btn-default">
+<p><span class="fa fa-arrow-down"></span>  seleccione su video, (peso permitido maximo 50mb, formato .mp4)</p>
+
+<form method="post" enctype="multipart/form-data">
+
+	<input type="file" name="video" class="btn btn-default" id="subirVideo" required>
 	
-	<input type="button" value="Subir Video" class="btn btn-info">
+	<input type="submit" value="Subir Video" class="btn btn-info">
 
 </form>
 
-<ul id="galeriaVideo">
-	<li>
+<ul id="galeriaVideo">	
+	<?php
+		$videos = new GestorVideosController();
+		$videos -> mostrarVideosController();
+	?>
+</ul>
+
+
+	<button class="btn btn-warning" style="margin:10px 30px;" id="ordenarVideos">Ordenar Videos</button>
+	<button class="btn btn-primary" style="margin:10px 30px;display:none;" id="guardarOrden">Guardar Orden</button>
+
+</div>
+
+<!-- <li>
 		<span class="fa fa-times"></span>
 		<video controls>
 			<source src="views/videos/video01.mp4" type="video/mp4">
@@ -55,14 +71,7 @@ VIDEOS ADMINISTRABLE
 		<video controls>
 			<source src="views/videos/video04.mp4" type="video/mp4">
 			</video>	
-	</li>
-
-</ul>
-
-
-	<button class="btn btn-warning " style="margin:10px 30px;">Ordenar Videos</button>
-
-</div>
+	</li> -->
 
 
 <!--====  Fin de VIDEOS ADMINISTRABLE  ====-->

@@ -16,5 +16,8 @@ require_once "controllers/GestorArticulo.php";
 require_once "models/GestorGaleria.php";
 require_once "controllers/GestorGaleria.php";
 
+require_once "models/GestorVideos.php";
+require_once "controllers/GestorVideos.php";
+
 $template = new TemplateController();
 $template -> template();

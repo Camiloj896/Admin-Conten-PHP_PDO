@@ -42,7 +42,7 @@ class GestorArticuloController{
             $introduccionArticulo = $_POST["introduccionAr"] . "...";        
             $contenidoArticulo = $_POST["contenidoAr"];
 
-            $borrar = glob("views/images/articulos/temp/*");
+            $borrar = glob("views/images/articulos/temp/*");$borrar = glob("views/images/articulos/temp/*");
 
             foreach ($borrar as $file){
                 unlink($file);
