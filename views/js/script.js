@@ -144,4 +144,70 @@ $.scrollUp({
 
 });
 
-/*=====  Fin de SCROLL   ======*/
+// VALIDAR FORMULARIO CONTACTOS
+//------------------------------------
+
+function ValidarContacto(){
+
+	nombre = $("#nombre").val();
+	email = $("#email").val();
+	contenido = $("#contenido").val();
+
+	//VALIDAR NOMBRE
+	//--------------------------------
+
+	if (nombre != "") {		
+		
+		var expresion = /^[a-zA-Z0-9]*$/;		
+
+		if (!expresion.test(nombre)) {
+			$("#nombre").before('<div class="alert alert-danger" style="text-align:center" id="alertEmail"><strong>!No escriba Carracteres especiales¡</strong></div>');			
+			$("#email").css({"border-color":"#B7391F"});
+			$("#infoMas").hide();
+			return false;
+		}else{
+			$("#alertEmail").remove();
+		}
+
+	}
+
+	//VALIDAR CORREO
+	//--------------------------------
+
+	if (email != "") {		
+		
+		var expresion = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
+		if (!expresion.test(email)) {
+			$("#nombre").before('<div class="alert alert-warning" style="text-align:center" id="alertName"><strong>!Verifique su correo¡</strong></div>');			
+			$("#nombre").css({"border-color":"#B7391F"});
+			$("#infoMas").hide();
+			return false;
+		}else{
+			$("#alertName").remove();
+		}
+
+	}
+
+	//VALIDAR CONTENIDO
+	//--------------------------------
+
+	if (contenido != "") {		
+		
+		var expresion = /^[a-zA-Z0-9\s]*$/;		
+
+		if (!expresion.test(contenido)) {
+			$("#nombre").before('<div class="alert alert-danger" style="text-align:center" id="alertCont"><strong>!No escriba Carracteres especiales¡</strong></div>');			
+			$("#contenido").css({"border-color":"#B7391F"});
+			$("#infoMas").hide();
+			return false;
+		}else{
+			$("#alertCont").remove();
+		}
+
+	}
+
+
+	return true;	
+
+}

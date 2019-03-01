@@ -26,7 +26,7 @@
 
 	<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="formulario" >
 
-		<ol>
+		<ol id="infoMas">
     		<li>
         		<a href="http://www.facebook.com" target="_blank">
           		<i class="fa fa-facebook" style="font-size:24px;"></i>  
@@ -46,17 +46,23 @@
     		</li>
 			</ol>
 
-			<form>
-			    <input type="text" class="form-control"  placeholder="Nombre">
+			<form method="POST" onsubmit="return ValidarContacto()">
+			    
+					<input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
 
-			    <input type="email" class="form-control" placeholder="Email">
+			    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
 
-			    <textarea name="" id="" cols="30" rows="10" placeholder="Contenido del Mensaje" class="form-control"></textarea>
-
+			    <textarea name="contenido" id="contenido" cols="30" rows="10" placeholder="Contenido del Mensaje" class="form-control" required></textarea>
 			 
-			  	<input type="button" class="btn btn-default" value="Enviar">
+			  	<input type="submit" class="btn btn-info" value="Enviar">
 		</form>
-						
+		
+		<?php
+
+				$mensajes = new SuscriptoresController();
+				$mensajes -> validarDatosContenido();
+
+		?>				
 
 	</div>
 
