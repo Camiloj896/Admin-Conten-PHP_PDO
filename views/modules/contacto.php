@@ -59,7 +59,7 @@
 		
 		<?php
 
-				$mensajes = new SuscriptoresController();
+				$mensajes = new MensajesController();
 				$mensajes -> validarDatosContenido();
 
 		?>				

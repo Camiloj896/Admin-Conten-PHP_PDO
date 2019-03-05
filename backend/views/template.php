@@ -16,8 +16,7 @@
 	<link rel="stylesheet" href="views/css/responsive.bootstrap.min.css">
 	<link rel="stylesheet" href="views/css/jquery-ui.min.css">
 	<link rel="stylesheet" href="views/css/sweetalert.css">
-	<link rel="stylesheet" href="views/css/cssFancybox/jquery.fancybox.css">
-	<link rel="stylesheet" href="views/css/jquery-ui.min.css">
+	<link rel="stylesheet" href="views/css/cssFancybox/jquery.fancybox.css">	
 
 	<script src="views/js/jquery-2.2.0.min.js"></script>
 	<script src="views/js/bootstrap.min.js"></script>
@@ -58,6 +57,7 @@
 	<script src="views/js/GestorArticulo.js"></script>
 	<script src="views/js/GestorGaleria.js"></script>	
 	<script src="views/js/GestorVideos.js"></script>
+	<script src="views/js/GestorMensajes.js"></script>
 	
 </body>
 

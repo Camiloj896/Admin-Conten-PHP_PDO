@@ -162,14 +162,14 @@ function ValidarContacto(){
 
 		if (!expresion.test(nombre)) {
 			$("#nombre").before('<div class="alert alert-danger" style="text-align:center" id="alertEmail"><strong>!No escriba Carracteres especiales¡</strong></div>');			
-			$("#email").css({"border-color":"#B7391F"});
+			$("#nombre").css({"border-color":"#B7391F"});
 			$("#infoMas").hide();
 			return false;
 		}else{
 			$("#alertEmail").remove();
 		}
 
-	}
+	}	
 
 	//VALIDAR CORREO
 	//--------------------------------
@@ -194,7 +194,7 @@ function ValidarContacto(){
 
 	if (contenido != "") {		
 		
-		var expresion = /^[a-zA-Z0-9\s]*$/;		
+		var expresion = /^[a-zA-Z0-9\s\.,]*$/;	
 
 		if (!expresion.test(contenido)) {
 			$("#nombre").before('<div class="alert alert-danger" style="text-align:center" id="alertCont"><strong>!No escriba Carracteres especiales¡</strong></div>');			

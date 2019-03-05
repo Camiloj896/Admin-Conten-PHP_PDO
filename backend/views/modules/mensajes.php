@@ -21,73 +21,48 @@ MENSAJES
 <div id="bandejaMensajes" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
  
 	 <div >
-	    <h1>Bandeja de Entrada</h1>
+	    <h1 >Bandeja de Entrada</h1>
 	    <hr>
-	 </div>
+	 </div>  
 
-	  <div class="well well-sm">
+	 <?php 
 		
-		<span class="fa fa-times pull-right"></span>
-		<h3>De: Lorem Ipsum</h3>
-		<h5>Email: correo@correo.com</h5>
-	  	<p>Lorem ipsum dolor sit amet, consectetur...</p>
-	  	<button class="btn btn-info btn-sm">Leer</button>
+		$mensajes = new GestorMensajesController();
+		$mensajes -> mostrarMensajesController();
+		$mensajes -> eliminarMensajeController();		
 
-	  </div>
-
-	  <div class="well well-sm">
-		
-		<span class="fa fa-times pull-right"></span>
-		<h3>De: Lorem Ipsum</h3>
-		<h5>Email: correo@correo.com</h5>
-	  	<p>Lorem ipsum dolor sit amet, consectetur...</p>
-	  	<button class="btn btn-info btn-sm">Leer</button>
-
-	  </div>
-
-	  <div class="well well-sm">
-		
-		<span class="fa fa-times pull-right"></span>
-		<h3>De: Lorem Ipsum</h3>
-		<h5>Email: correo@correo.com</h5>
-	  	<p>Lorem ipsum dolor sit amet, consectetur...</p>
-	  	<button class="btn btn-info btn-sm">Leer</button>
-
-	  </div>
+	 ?>
 
 </div>
 
 <div id="lecturaMensajes" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
  
-	 <div >
-	  <hr>
-	   <button class="btn btn-success">Enviar mensaje a todos los usuarios</button>
+	 <div>	  
+	 	<br/>
+	   <button class="btn btn-success" id="enviarMensajes">Enviar mensaje a todos los usuarios</button>
 	    <hr>
 	 </div>
 
-	 <form action="">
+	 <form action="" style="display:none" id="responderMensajes">
 
 	 	<p>Para: Todos los usuarios</p>
 	 	
-	 	<input type="text" placeholder="Título del Mensaje" class="form-control">
+	 	<input type="text" placeholder="Título del Mensaje" name="tituloTodos" class="form-control">
 
-		<textarea name="" id="" cols="30" rows="5" placeholder="Escribe tu mensaje..." class="form-control"></textarea>
+		<textarea name="mensajeTodos" cols="30" rows="5" placeholder="Escribe tu mensaje..." class="form-control"></textarea>
 
-		<input type="button" class="form-control btn btn-primary" value="Enviar">
+		<input type="button" class="form-control btn btn-primary" id="enviarCorreoTodos" value="Enviar">
 
 	 </form>
 
-	 <div class="well well-sm">
-		
-		<span class="fa fa-times pull-right"></span>
-		<h3>De: Lorem Ipsum</h3>
-		<h5>Email: correo@correo.com</h5>
-	  	<p style="background:#fff; padding:10px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-	  	<button class="btn btn-info btn-sm">Responder</button>
+	 <div class="well well-sm" id="leerMensaje" style="display:none">	
 
-	  </div>
+	 <?php
+	 	$responderMensaje = new GestorMensajesController();
+	 	$responderMensaje->responderMensajesController();
+	 ?>
 
-
+	 </div>
 
 </div>
 

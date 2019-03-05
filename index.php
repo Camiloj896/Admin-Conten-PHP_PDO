@@ -14,8 +14,8 @@
 	include_once "./controllers/GestorVideos.php";
 	include_once "./models/GestorVideos.php";	
 
-	include_once "./controllers/GestorSuscriptores.php";
-	include_once "./models/GestorSuscriptores.php";		
+	include_once "./controllers/GestorMensajes.php";
+	include_once "./models/GestorMensajes.php";		
 
 	$template = new TemplateController();
 	$template -> template();
